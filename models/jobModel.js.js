@@ -1,0 +1,11 @@
+const mongoose = require('mongoose');
+
+const jobSchema = new mongoose.Schema({
+  company: { type: String, required: true },
+  position: { type: String, required: true },
+  status: { type: String, enum: ['interview', 'declined', 'pending'], default: 'pending' },
+  jobType: { type: String, enum: ['full-time', 'part-time', 'remote', 'internship'], default: 'full-time' },
+  jobLocation: { type: String, default: 'my city' },
+}, { timestamps: true });
+
+module.exports = mongoose.model('Job', jobSchema);
